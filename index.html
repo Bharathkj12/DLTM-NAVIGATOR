@@ -26,14 +26,37 @@
       <p class="subtitle">Convert DLTM coordinates to GPS</p>
     </div>
 
-    <!-- Inputs -->
-    <div class="input-group">
-      <label for="easting">Easting (X)</label>
-      <input type="number" id="easting" placeholder="500000" inputmode="decimal" />
+    <!-- Mode Toggle -->
+    <div class="toggle-container">
+      <div class="toggle-btn active" id="mode-dltm" onclick="setMode('dltm')">DLTM to GPS</div>
+      <div class="toggle-btn" id="mode-gps" onclick="setMode('gps')">GPS to DLTM</div>
     </div>
-    <div class="input-group">
-      <label for="northing">Northing (Y)</label>
-      <input type="number" id="northing" placeholder="2780000" inputmode="decimal" />
+
+    <!-- Inputs -->
+    <div class="input-container">
+      <!-- DLTM Inputs -->
+      <div id="input-dltm">
+        <div class="input-group">
+          <label for="easting">Easting (X)</label>
+          <input type="number" id="easting" placeholder="500000" inputmode="decimal" />
+        </div>
+        <div class="input-group">
+          <label for="northing">Northing (Y)</label>
+          <input type="number" id="northing" placeholder="2780000" inputmode="decimal" />
+        </div>
+      </div>
+
+      <!-- GPS Inputs -->
+      <div id="input-gps" style="display: none;">
+        <div class="input-group">
+          <label for="latitude">Latitude</label>
+          <input type="number" id="latitude" placeholder="25.2048" inputmode="decimal" step="any" />
+        </div>
+        <div class="input-group">
+          <label for="longitude">Longitude</label>
+          <input type="number" id="longitude" placeholder="55.2708" inputmode="decimal" step="any" />
+        </div>
+      </div>
     </div>
 
     <!-- Convert Button -->
@@ -48,13 +71,28 @@
 
     <!-- Results -->
     <div class="results" id="results">
-      <div class="result-row">
-        <span class="result-label">Latitude</span>
-        <span class="result-value" id="lat">—</span>
+      <!-- DLTM Result Labels (Lat/Lng) -->
+      <div id="res-dltm">
+        <div class="result-row">
+          <span class="result-label">Latitude</span>
+          <span class="result-value" id="res-lat">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Longitude</span>
+          <span class="result-value" id="res-lng">—</span>
+        </div>
       </div>
-      <div class="result-row">
-        <span class="result-label">Longitude</span>
-        <span class="result-value" id="lng">—</span>
+
+      <!-- GPS Result Labels (Easting/Northing) -->
+      <div id="res-gps" style="display: none;">
+        <div class="result-row">
+          <span class="result-label">Easting (X)</span>
+          <span class="result-value" id="res-easting">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Northing (Y)</span>
+          <span class="result-value" id="res-northing">—</span>
+        </div>
       </div>
     </div>
 
